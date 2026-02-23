@@ -24,15 +24,15 @@ def health():
 
 @app.post("/embed")
 def embed(req: EmbedRequest):
-    if not req.text.strip():
-        raise HTTPException(status_code=400, detail="Empty text")
+    if not req.texts:
+        raise HTTPException(status_code=400, detail="Empty input")
 
     try:
-        embedding = get_embedding(req.text)
+        embeddings = get_embedding(req.texts)
     except RuntimeError:
         raise HTTPException(status_code=503, detail="Model not ready")
 
     return {
-        "embedding": embedding.tolist(),
-        "dimension": int(len(embedding)),
+        "embeddings": embeddings.tolist(),
+        "dimension": int(embeddings.shape[1]),
     }
