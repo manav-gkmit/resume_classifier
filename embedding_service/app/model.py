@@ -1,3 +1,4 @@
+import numpy as np
 from app.config import settings
 from sentence_transformers import SentenceTransformer
 
@@ -6,23 +7,24 @@ _model: SentenceTransformer | None = None
 
 def load_model() -> None:
     global _model
-    _model = SentenceTransformer(settings.EMBED_MODEL)
-    return _model
+    if _model is None:
+        _model = SentenceTransformer(settings.EMBED_MODEL)
 
 
 def get_model() -> SentenceTransformer:
-    model = load_model()
-    if model is None:
+    if _model is None:
         raise RuntimeError("Model not loaded")
-    return model
+    return _model
 
 
-def get_embedding(feature: str):
+def get_embedding(texts: list[str]) -> np.ndarray:
     model = get_model()
 
-    emb = model.encode(
-        sentences=feature,
+    embeddings = model.encode(
+        texts,
         normalize_embeddings=True,
         convert_to_numpy=True,
+        batch_size=32,
     )
-    return emb
+
+    return embeddings
