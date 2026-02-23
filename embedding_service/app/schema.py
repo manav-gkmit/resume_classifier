@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class EmbedRequest(BaseModel):
-    text: list[str]
+    texts: list[str]
 
 
 class EmbedResponse(BaseModel):
