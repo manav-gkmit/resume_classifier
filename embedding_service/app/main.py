@@ -4,13 +4,14 @@ from app.model import get_embedding, get_model, load_model
 from app.schema import EmbedRequest
 from fastapi import FastAPI, HTTPException
 
-app = FastAPI()
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_model()
     yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 @app.get("/health")
