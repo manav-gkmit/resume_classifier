@@ -1,0 +1,23 @@
+[project]
+name = "resume-inference-service"
+version = "0.1.0"
+description = "Resume classifier inference API"
+requires-python = ">=3.11,<3.12"
+
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn",
+    "numpy<2",
+    "scikit-learn",
+    "joblib",
+    "pydantic",
+    "torch==2.2.2; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+    "torch; platform_machine != 'x86_64' or sys_platform != 'darwin'",
+    "httpx",
+    "docling==2.71.0",
+    "langchain-core",
+    "langchain-openai",
+    "openai>=2.16.0",
+    "python-dotenv",
+    "nltk>=3.9.2",
+]
