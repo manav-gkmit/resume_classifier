@@ -1,7 +1,6 @@
 [project]
 name = "resume-inference-service"
 version = "0.1.0"
-description = "Resume classifier inference API"
 requires-python = ">=3.11,<3.12"
 
 dependencies = [
@@ -11,13 +10,15 @@ dependencies = [
     "scikit-learn",
     "joblib",
     "pydantic",
-    "torch==2.2.2; sys_platform == 'darwin' and platform_machine == 'x86_64'",
-    "torch; platform_machine != 'x86_64' or sys_platform != 'darwin'",
+    "pydantic-settings",
     "httpx",
-    "docling==2.71.0",
+    "docling-core==2.65.2",
+    "docling-parse==4.7.3",
     "langchain-core",
     "langchain-openai",
+    "python-multipart",
     "openai>=2.16.0",
     "python-dotenv",
     "nltk>=3.9.2",
+    "rapidocr>=3.6.0",
 ]
