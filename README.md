@@ -49,3 +49,21 @@ For each resume, the system returns:
 The probability threshold is configurable depending on hiring criteria.
 
 ---
+
+## How to Setup
+
+`Prerequisites: Docker installed on your machine.`
+
+
+- Clone the repository:
+```sh
+git clone https://github.com/manav-gkmit/resume_classifier.git
+```
+
+- Change directory and build the containers:
+```sh
+cd resume_classifier
+docker compose up --build
+```
+
+- The service is up and running on port 8000.

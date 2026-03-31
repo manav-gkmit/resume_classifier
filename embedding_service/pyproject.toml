@@ -1,0 +1,19 @@
+[project]
+name = "embedding-service"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn",
+    "torch==2.2.2+cpu",
+    "transformers==4.39.3",
+    "sentence-transformers==2.6.1",
+    "accelerate==0.29.3",
+    "numpy<2",
+    "pydantic-settings"
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
